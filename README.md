@@ -1,2 +1,3 @@
 # Inventory1.sh
-Shorts examples about Linux scripts for dummies.
+
+After Inventory1.sh runs on a Linux system, an file named HOSTNAME_inventory.txt be placed on working directory.
