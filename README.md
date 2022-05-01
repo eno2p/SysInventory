@@ -1,2 +1,2 @@
-# SysInventory
-Short example about inventory a hardware on Linux system.
+# System
+Shorts examples about Linux scripts for dummies.
