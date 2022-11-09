@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+
+clear
+
+
+DirLocal="/home/$USER/Downloads/"
+
+LibreOfficeDirFile=$DirLocal"LibreOfficeDir.txt"
+
+apt-get remove libreoffice* --purge -y
+
+if [ -f "$LibreOfficeDirFile" ]
+then
+    rm $LibreOfficeDirFile
+fi
+
+cd $DirLocal
+SuiteOffice='LibreOffice_*.tar.gz'
+
+
+for i in $SuiteOffice;
+do
+    tar -xvzf $i
+
+done
+
+ls -lhtr $DirLocal | grep "^d" | awk '{print $9}' >> $LibreOfficeDirFile
+
+apt-get install -f -y
+
+while read DiretoriosLibreOffice
+do
+
+    cd $DirLocal$DiretoriosLibreOffice'/DEBS';
+    dpkg -i *.deb
+    apt-get install -f -y
+
+done < $LibreOfficeDirFile
